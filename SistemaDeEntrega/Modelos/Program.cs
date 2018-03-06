@@ -10,6 +10,6 @@ namespace Modelos
     {
         static void Main(string[] args)
         {
-        }i
+        }
     }
 }
