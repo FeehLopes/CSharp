@@ -116,7 +116,18 @@ namespace ConsoleView
 
         private static void ExibirDadosCliente(Cliente cliente)
         {
+            Console.WriteLine("--- Dados Cliente ---");
+            Console.WriteLine("Id:" + cliente.PessoaID);
+            Console.WriteLine("Nome:" + cliente.Nome);
+            Console.WriteLine("Cpf:" + cliente.Cpf);
 
+
+            Console.WriteLine("--- Endereço ---");
+            Console.WriteLine("Rua:" + cliente._Endereco.Rua);
+            Console.WriteLine("Num:" + cliente._Endereco.Numero);
+            Console.WriteLine("Complemento:" + cliente._Endereco.Complemento);
+            Console.WriteLine("-----------------");
+            Console.WriteLine();
         }
     }
 }
