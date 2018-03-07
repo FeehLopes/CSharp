@@ -54,7 +54,9 @@ namespace ConsoleView
                 switch (opcaoDigitada)
                 {
                     case OpcoesMenuPrincipal.CadastrarCliente:
-                        CadastrarCliente();
+                        Cliente c = CadastrarCliente();
+                        ExibirDadosCliente(c);
+                        
                         break;
                     case OpcoesMenuPrincipal.PesquisarCliente:
                         PesquisarCliente();
@@ -128,6 +130,7 @@ namespace ConsoleView
             Console.WriteLine("Complemento:" + cliente._Endereco.Complemento);
             Console.WriteLine("-----------------");
             Console.WriteLine();
+            
         }
     }
 }
