@@ -1,9 +1,6 @@
-﻿using Modelos;
+﻿using Controller;
+using Modelos;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleView
 {
@@ -55,8 +52,12 @@ namespace ConsoleView
                 {
                     case OpcoesMenuPrincipal.CadastrarCliente:
                         Cliente c = CadastrarCliente();
-                        ExibirDadosCliente(c);
                         
+
+                        ClienteController cc = new ClienteController();
+                        cc.SalvarCliente(c);
+                        ExibirDadosCliente(c);
+
                         break;
                     case OpcoesMenuPrincipal.PesquisarCliente:
                         PesquisarCliente();
