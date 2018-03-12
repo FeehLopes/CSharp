@@ -9,12 +9,12 @@ namespace ConsoleView
         enum OpcoesMenuPrincipal
 
         {
-            CadastrarCliente,
-            PesquisarCliente,
-            EditarCliente,
-            ExcluirCliente,
-            LimparTela,
-            Sair
+            CadastrarCliente =1,
+            PesquisarCliente =2,
+            EditarCliente =3,
+            ExcluirCliente = 4,
+            LimparTela = 5,
+            Sair = 6
         }
 
 
@@ -30,10 +30,11 @@ namespace ConsoleView
             Console.WriteLine("1 - Cadastrar Novo");
             Console.WriteLine("2 - Pesquisar Cliente");
             Console.WriteLine("3 - Editar Cliente");
+            Console.WriteLine("4- Excluir Cliente");
 
             Console.WriteLine(" - Geral -");
-            Console.WriteLine("4 - Limpar Tela");
-            Console.WriteLine("5 - Sair");
+            Console.WriteLine("5 - Limpar Tela");
+            Console.WriteLine("6-  Sair");
 
             //return Convert.ToInt32(Console.ReadLine());
             string opcao = Console.ReadLine();
@@ -77,7 +78,12 @@ namespace ConsoleView
             } while (opcaoDigitada != OpcoesMenuPrincipal.Sair);
         }
 
-          // Metodos Cliente
+        private static void PesquisarCliente()
+        {
+            throw new NotImplementedException();
+        }
+
+        // Metodos Cliente
         private static Cliente CadastrarCliente()
         {
             Cliente cli = new Cliente();
@@ -111,9 +117,9 @@ namespace ConsoleView
             return cli;
         }
 
-        private static Cliente PesquisarCliente()
+        private static Cliente PesquisarCliente(Cliente cli)
         {
-            // TODO : Fazer depois
+            
             return new Cliente();
         }
 
@@ -131,6 +137,12 @@ namespace ConsoleView
             Console.WriteLine("Complemento:" + cliente._Endereco.Complemento);
             Console.WriteLine("-----------------");
             Console.WriteLine();
+            
+        }
+
+        private static void ExcluirCliente(Cliente Cliente)
+        {
+            
             
         }
     }
