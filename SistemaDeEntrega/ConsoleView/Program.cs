@@ -64,11 +64,13 @@ namespace ConsoleView
                         PesquisarCliente();
                         break;
                     case OpcoesMenuPrincipal.EditarCliente:
+
                         break;
                     case OpcoesMenuPrincipal.ExcluirCliente:
                         ExcluirCliente();
                         break;
                     case OpcoesMenuPrincipal.LimparTela:
+
                         break;
                     case OpcoesMenuPrincipal.Sair:
                         break;
@@ -153,7 +155,9 @@ namespace ConsoleView
             Console.WriteLine("Digite o id do Cliente que deseja excluir: ");
             int idCliente = int.Parse(Console.ReadLine());
 
-
+            ClienteController cc = new ClienteController();
+            cc.ExcluirCliente(idCliente);
+            
             
         }
     }
