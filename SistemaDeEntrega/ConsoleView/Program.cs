@@ -66,6 +66,7 @@ namespace ConsoleView
                     case OpcoesMenuPrincipal.EditarCliente:
                         break;
                     case OpcoesMenuPrincipal.ExcluirCliente:
+                        ExcluirCliente();
                         break;
                     case OpcoesMenuPrincipal.LimparTela:
                         break;
@@ -146,9 +147,13 @@ namespace ConsoleView
             
         }
 
-        private static void ExcluirCliente(Cliente Cliente)
+        private static void ExcluirCliente()
+
         {
-            
+            Console.WriteLine("Digite o id do Cliente que deseja excluir: ");
+            int idCliente = int.Parse(Console.ReadLine());
+
+
             
         }
     }
