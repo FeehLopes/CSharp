@@ -19,10 +19,10 @@ namespace Controller
         }
         public Cliente ProcurarCliente(string nome)
         {
-            Cliente c = (from x in MeusClientes where x.Nome.ToLower().Equals(nome.Trim().ToLower()) select x).FirstOrDefault();
+            Cliente c = (from x in MeusClientes where x.Nome.ToLower().Contains(nome.Trim().ToLower()) select x).FirstOrDefault();
 
             return c;
-
+            
             //versão do professor
             // var c = from x in MeusClientes where x.Nome.Equals(nome) select x;
             //if (c!= null) 
