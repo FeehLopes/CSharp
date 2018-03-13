@@ -9,9 +9,9 @@ namespace ConsoleView
         enum OpcoesMenuPrincipal
 
         {
-            CadastrarCliente =1,
-            PesquisarCliente =2,
-            EditarCliente =3,
+            CadastrarCliente = 1,
+            PesquisarCliente = 2,
+            EditarCliente = 3,
             ExcluirCliente = 4,
             LimparTela = 5,
             Sair = 6
@@ -53,7 +53,7 @@ namespace ConsoleView
                 {
                     case OpcoesMenuPrincipal.CadastrarCliente:
                         Cliente c = CadastrarCliente();
-                        
+
 
                         ClienteController cc = new ClienteController();
                         cc.SalvarCliente(c);
@@ -78,10 +78,7 @@ namespace ConsoleView
             } while (opcaoDigitada != OpcoesMenuPrincipal.Sair);
         }
 
-        private static void PesquisarCliente()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         // Metodos Cliente
         private static Cliente CadastrarCliente()
@@ -117,11 +114,20 @@ namespace ConsoleView
             return cli;
         }
 
-        private static Cliente PesquisarCliente(Cliente cli)
+        private static void PesquisarCliente()
         {
-            
-            return new Cliente();
+            Console.WriteLine("Digite o nome do Cliente: ");
+            string nomeCliente = Console.ReadLine();
+
+            ClienteController cc = new ClienteController();
+            Cliente cli = cc.ProcurarCliente(nomeCliente);
+
+            if (cli != null)
+                ExibirDadosCliente(cli);
+            else
+                Console.WriteLine("* Cliente não encotrado");
         }
+    
 
         private static void ExibirDadosCliente(Cliente cliente)
         {
