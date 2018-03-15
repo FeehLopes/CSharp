@@ -1,6 +1,7 @@
 ﻿using Controller;
 using Modelos;
 using System;
+using System.Collections.Generic;
 
 namespace ConsoleView
 {
@@ -12,9 +13,10 @@ namespace ConsoleView
             CadastrarCliente = 1,
             PesquisarCliente = 2,
             EditarCliente = 3,
-            ExcluirCliente = 4,
-            LimparTela = 5,
-            Sair = 6
+            ListarClientes = 4,
+            ExcluirCliente = 5,
+            LimparTela = 6,
+            Sair = 7
         }
 
 
@@ -30,11 +32,12 @@ namespace ConsoleView
             Console.WriteLine("1 - Cadastrar Novo");
             Console.WriteLine("2 - Pesquisar Cliente");
             Console.WriteLine("3 - Editar Cliente");
-            Console.WriteLine("4- Excluir Cliente");
+            Console.WriteLine("4- Listar Clientes");
+            Console.WriteLine("5- Excluir Cliente");
 
             Console.WriteLine(" - Geral -");
-            Console.WriteLine("5 - Limpar Tela");
-            Console.WriteLine("6-  Sair");
+            Console.WriteLine("6 - Limpar Tela");
+            Console.WriteLine("7-  Sair");
 
             //return Convert.ToInt32(Console.ReadLine());
             string opcao = Console.ReadLine();
@@ -64,14 +67,23 @@ namespace ConsoleView
                         PesquisarCliente();
                         break;
                     case OpcoesMenuPrincipal.EditarCliente:
+                        EditarCliente();
+                        break;
+
+                    case OpcoesMenuPrincipal.ListarClientes:
+                        ListarClientes();
 
                         break;
+
                     case OpcoesMenuPrincipal.ExcluirCliente:
                         ExcluirCliente();
                         break;
                     case OpcoesMenuPrincipal.LimparTela:
 
                         break;
+
+                    
+
                     case OpcoesMenuPrincipal.Sair:
                         break;
                     default:
@@ -160,5 +172,43 @@ namespace ConsoleView
             
             
         }
+        public static void ListarClientes()
+        {
+            ClienteController cc = new ClienteController();
+            List<Cliente> ListarClientes = cc.ListarClientes();
+
+            foreach (Cliente c in ListarClientes)
+            {
+
+                Console.WriteLine("--- Dados Cliente ---");
+                Console.WriteLine("Id:" + c.PessoaID);
+                Console.WriteLine("Nome:" + c.Nome);
+                Console.WriteLine("Cpf:" + c.Cpf);
+
+
+                Console.WriteLine("--- Endereço ---");
+                Console.WriteLine("Rua:" + c._Endereco.Rua);
+                Console.WriteLine("Num:" + c._Endereco.Numero);
+                Console.WriteLine("Complemento:" + c._Endereco.Complemento);
+                Console.WriteLine("-----------------");
+                Console.WriteLine();
+
+                //versão do profº 
+                //List<Cliente> lista = cc.ListarClientes();
+                //foreach(Cliente cli in Lista)
+                //{
+                // ExibirDadosCliente(cli);
+                //}
+                //{
+                // Console.WriteLine();
+                //}
+            }
+        }
+
+           public static void EditarCliente()
+        {
+
+        }
+        
     }
 }
