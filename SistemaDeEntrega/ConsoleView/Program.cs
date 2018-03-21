@@ -82,7 +82,7 @@ namespace ConsoleView
 
                         break;
 
-                    
+
 
                     case OpcoesMenuPrincipal.Sair:
                         break;
@@ -93,7 +93,7 @@ namespace ConsoleView
             } while (opcaoDigitada != OpcoesMenuPrincipal.Sair);
         }
 
-        
+
 
         // Metodos Cliente
         private static Cliente CadastrarCliente()
@@ -108,23 +108,10 @@ namespace ConsoleView
             Console.Write("Digite o cpf: ");
             cli.Cpf = Console.ReadLine();
 
-            // ... Endereco
-            Endereco end = new Endereco();
+            Endereco end = CadastrarEndereco();
 
-            Console.Write("Digite o nome da rua: ");
-            end.Rua = Console.ReadLine();
+            cli.EnderecoID = end.EnderecoID;
 
-            Console.WriteLine();
-
-            Console.Write("Digite o numero: ");
-            end.Numero = int.Parse(Console.ReadLine());
-
-            Console.WriteLine();
-
-            Console.Write("Digite o complemento: ");
-            end.Complemento = Console.ReadLine();
-
-            cli._Endereco = end;
 
             return cli;
         }
@@ -142,7 +129,7 @@ namespace ConsoleView
             else
                 Console.WriteLine("* Cliente não encotrado");
         }
-    
+
 
         private static void ExibirDadosCliente(Cliente cliente)
         {
@@ -150,15 +137,11 @@ namespace ConsoleView
             Console.WriteLine("Id:" + cliente.PessoaID);
             Console.WriteLine("Nome:" + cliente.Nome);
             Console.WriteLine("Cpf:" + cliente.Cpf);
+            Console.WriteLine("ID endereço: " + cliente.EnderecoID);
+
+            ExibirDadosEndereco(cliente.EnderecoID);
 
 
-            Console.WriteLine("--- Endereço ---");
-            Console.WriteLine("Rua:" + cliente._Endereco.Rua);
-            Console.WriteLine("Num:" + cliente._Endereco.Numero);
-            Console.WriteLine("Complemento:" + cliente._Endereco.Complemento);
-            Console.WriteLine("-----------------");
-            Console.WriteLine();
-            
         }
 
         private static void ExcluirCliente()
@@ -169,8 +152,8 @@ namespace ConsoleView
 
             ClienteController cc = new ClienteController();
             cc.ExcluirCliente(idCliente);
-            
-            
+
+
         }
         public static void ListarClientes()
         {
@@ -185,13 +168,7 @@ namespace ConsoleView
                 Console.WriteLine("Nome:" + c.Nome);
                 Console.WriteLine("Cpf:" + c.Cpf);
 
-
-                Console.WriteLine("--- Endereço ---");
-                Console.WriteLine("Rua:" + c._Endereco.Rua);
-                Console.WriteLine("Num:" + c._Endereco.Numero);
-                Console.WriteLine("Complemento:" + c._Endereco.Complemento);
-                Console.WriteLine("-----------------");
-                Console.WriteLine();
+                
 
                 //versão do profº 
                 //List<Cliente> lista = cc.ListarClientes();
@@ -205,10 +182,118 @@ namespace ConsoleView
             }
         }
 
-           public static void EditarCliente()
+        public static void EditarCliente()
+        {
+            ClienteController cc = new ClienteController();
+
+            Cliente cliente;
+
+            Console.WriteLine("Digite a Id do cadastro que deseja alterar: ");
+            cliente = cc.PesquisarPorID(int.Parse(Console.ReadLine()));
+
+            ExibirDadosCliente(cliente);
+
+
+            Console.Write("Digite novo nome........: ");
+            cliente.Nome = Console.ReadLine();
+
+            Console.Write("Digite novo cpf.........: ");
+            cliente.Cpf = Console.ReadLine();
+
+            // ... Endereco
+            EnderecoController ee = new EnderecoController();
+
+            EditarEndereco(cliente.EnderecoID);
+        }
+
+        // ENDEREÇO----
+        public static Endereco CadastrarEndereco()
         {
 
+            Endereco end = new Endereco();
+
+            Console.Write("Digite o nome da rua: ");
+            end.Rua = Console.ReadLine();
+
+            Console.WriteLine();
+
+            Console.Write("Digite o numero: ");
+            end.Numero = int.Parse(Console.ReadLine());
+
+            Console.WriteLine();
+
+            Console.Write("Digite o complemento: ");
+            end.Complemento = Console.ReadLine();
+
+            EnderecoController ee = new EnderecoController();
+            ee.SalvarEndereco(end);
+
+            return end;
+
         }
-        
+        //Exibir Endereço
+        public static void ExibirDadosEndereco(int ID)
+        {
+            EnderecoController ee = new EnderecoController();
+            Endereco e = ee.ProcurarEnderecoID(ID);
+
+            Console.WriteLine("--- Endereço ---");
+            Console.WriteLine("Rua:" + e.Rua);
+            Console.WriteLine("Num:" + e.Numero);
+            Console.WriteLine("Complemento:" + e.Complemento);
+            Console.WriteLine("-----------------");
+            Console.WriteLine();
+        }
+
+        // Listar Endereços
+        public static void ListarEndereco()
+        {
+            EnderecoController ee = new EnderecoController();
+            List<Endereco> ListarEndereco = ee.ListarEndereco();
+
+            foreach (Endereco e in ListarEndereco)
+            {
+
+                Console.WriteLine("--- Endereço ---");
+                Console.WriteLine("Rua:" + e.Rua);
+                Console.WriteLine("Num:" + e.Numero);
+                Console.WriteLine("Complemento:" + e.Complemento);
+                Console.WriteLine("-----------------");
+                Console.WriteLine();
+
+            }
+
+        }
+
+        public static void ExcluirEndereco()
+        {
+            Console.WriteLine("Digite o id do Endereco que deseja excluir: ");
+            int idEndereco = int.Parse(Console.ReadLine());
+
+            EnderecoController ee = new EnderecoController();
+            ee.ExcluirEndereco(idEndereco);
+        }
+
+        public static void EditarEndereco(int EnderecoID)
+        {
+            EnderecoController ee = new EnderecoController();
+            Endereco endereco;
+            endereco = ee.ProcurarEnderecoID(EnderecoID);
+
+            Console.WriteLine("Digite a Id do endereço que deseja alterar: ");
+            int idPesquisa = int.Parse(Console.ReadLine());
+            EditarEndereco(idPesquisa);
+
+            Console.Write("Digite o nome da rua....: ");
+            endereco.Rua = Console.ReadLine();
+
+            Console.Write("Digite o numero.........: ");
+            endereco.Numero = int.Parse(Console.ReadLine());
+
+            Console.Write("Digite o complemento....: ");
+            endereco.Complemento = Console.ReadLine();
+        }
     }
+
 }
+
