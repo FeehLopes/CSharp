@@ -1,0 +1,17 @@
+﻿<Window x:Class="MeuProjetoWPF.TelaCadastro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MeuProjetoWPF"
+        mc:Ignorable="d"
+        Title="TelaCadastro" Height="300" Width="300">
+    <Grid x:Name="TelaCadastro1" RenderTransformOrigin="0.504,0.514" ContextMenuClosing="TelaCadastro_ContextMenuClosing" Background="#FF8CB9C7">
+        <Label x:Name="label" Content="Cadastro Cliente" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="149" FontSize="14" FontFamily="Arial Black"/>
+        <Label x:Name="lblNome" Content="Nome:" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="58"/>
+        
+        <Button x:Name="btnSalvar" Content="Salvar" HorizontalAlignment="Left" Margin="132,147,0,0" VerticalAlignment="Top" Width="92" FontFamily="Arial Black" IsEnabled="False"/>
+        <TextBox x:Name="txtNome" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Margin="68,67,0,0" LostFocus="txtNome_LostFocus"/>
+
+    </Grid>
+</Window>
